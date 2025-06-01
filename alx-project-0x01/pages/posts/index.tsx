@@ -16,7 +16,7 @@ const Posts: React.FC<PostProps[]> = ({ posts }) => {
             styles="bg-blue-700 px-4 py-2 rounded-full text-white"
           />
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {posts && posts.map(({ title, body, userId, id }: PostProps, key: number) => {
             return (
               <PostCard
