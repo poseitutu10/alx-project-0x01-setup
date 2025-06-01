@@ -5,8 +5,8 @@ import { UserProps } from "@/interfaces";
 
 
 
-const Users: React.FC<UserProps[]> = ({users}) => {
-  console.log(users)
+const Users: React.FC<UserProps[]> = ({posts}) => {
+  console.log(posts)
   return (
     <div>
       <Header />
@@ -17,7 +17,7 @@ const Users: React.FC<UserProps[]> = ({users}) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
-            users.map(({name, email, phone, username}: UserProps, key: number) => {
+            posts.map(({name, email, phone, username}: UserProps, key: number) => {
               return (
                 <UserCard name={name} email={email} phone={phone} username={username} key={key} />
               )
@@ -29,14 +29,14 @@ const Users: React.FC<UserProps[]> = ({users}) => {
   )
 }
 
-export const getStaticProps = async () => {
+export async function getStaticProps(){
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     if(response.ok){
-      const users = await response.json();
+      const posts = await response.json();
       return {
         props: {
-          users
+          posts
         }
       }
     }
