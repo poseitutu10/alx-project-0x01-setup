@@ -7,18 +7,18 @@ export interface ButtonProps {
 export interface PostProps {
   userId: number;
   id: number;
-  title:  string;
+  title: string;
   body: string;
 }
 
-interface Geolocation{
+interface Geolocation {
   lat: number;
   lng: number;
 }
 
 interface Address extends Geolocation {
   street: string;
-  suite:  string;
+  suite: string;
   city: string;
   zipcode: string;
   geo: Geolocation;
@@ -41,16 +41,14 @@ export interface UserProps extends Address {
   company: Company;
 }
 
-
-export interface  PostData{
+export interface PostData {
   userId: number;
   id?: number;
   title: string;
   body: string;
 }
 
-
 export interface PostModalProps {
   onClose: () => void;
-  onSubmit: (post: PostData) => void
+  onSubmit: (post: PostData) => void;
 }
