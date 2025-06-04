@@ -1,6 +1,7 @@
 export interface ButtonProps {
   title: string;
   styles: string;
+  onClick?: () => void;
 }
 
 export interface PostProps {
@@ -38,4 +39,18 @@ export interface UserProps extends Address {
   phone: string;
   website: string;
   company: Company;
+}
+
+
+export interface  PostData{
+  userId: number;
+  id?: number;
+  title: string;
+  body: string;
+}
+
+
+export interface PostModalProps {
+  onClose: () => void;
+  onSubmit: (post: PostData) => void
 }
