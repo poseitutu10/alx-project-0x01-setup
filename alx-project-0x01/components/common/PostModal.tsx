@@ -1,36 +1,38 @@
 import { PostData, PostModalProps } from "@/interfaces";
 import React, { useState } from "react";
 
-
-
-const PostModal: React.FC<PostModalProps> = ({onClose, onSubmit}) => {
+const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }) => {
   const [post, setPost] = useState<PostData>({
     userId: 1,
     title: "",
-    body: ""
-  })
+    body: "",
+  });
 
-
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setPost(prevPost => ({...prevPost, [name]: value}))
-  }
+    setPost((prevPost) => ({ ...prevPost, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(post);
-    onClose()
-  }
+    onClose();
+  };
 
-
-  return(
+  return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white rounded-lg p-8 shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Post</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="userId" className="block text-gray-700 font-medium mb-2">User ID</label>
+            <label
+              htmlFor="userId"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              User ID
+            </label>
             <input
               type="number"
               id="userId"
@@ -41,7 +43,12 @@ const PostModal: React.FC<PostModalProps> = ({onClose, onSubmit}) => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="title" className="block text-gray-700 font-medium mb-2">Title</label>
+            <label
+              htmlFor="title"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Title
+            </label>
             <input
               type="text"
               id="title"
@@ -53,7 +60,12 @@ const PostModal: React.FC<PostModalProps> = ({onClose, onSubmit}) => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="body" className="block text-gray-700 font-medium mb-2">Body</label>
+            <label
+              htmlFor="body"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Body
+            </label>
             <textarea
               id="body"
               name="body"
@@ -82,7 +94,7 @@ const PostModal: React.FC<PostModalProps> = ({onClose, onSubmit}) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PostModal;
